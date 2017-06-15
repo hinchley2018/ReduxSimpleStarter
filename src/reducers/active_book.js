@@ -11,8 +11,9 @@ export default function(state=null,action){
             //dont mutate state here return it
             return action.payload;
         }
-        default:{
-            return state;
-        }
+
+
+
     }
+    return state;
 }
