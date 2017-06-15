@@ -3,17 +3,31 @@
  */
 
 import React,{Component} from 'react';
-export default class SearchBar extends Component{
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+
+
+import {fetchWeather} from "../actions/index";
+
+
+class SearchBar extends Component{
     constructor(props){
         super(props);
         this.state = {
-            term:''
+            city:'',
+            country:''
         }
-        this.onInputChange = this.onInputChange.bind(this);
+        this.onInputChangeCity = this.onInputChangeCity.bind(this)
+        this.onInputChangeCountry = this.onInputChangeCountry.bind(this)
     }
 
-    onInputChange(event){
-        this.setState({term: event.target.value});
+    onInputChangeCity(event){
+        console.log(event);
+        this.setState({city: event.target.value});
+    }
+    onInputChangeCountry(event){
+        console.log(event);
+        this.setState({country: event.target.value});
     }
 
     render(){
@@ -25,10 +39,17 @@ export default class SearchBar extends Component{
                 <input
                     placeholder="Get a 5-day forecast in your favorite city"
                     className="form-control"
-                    value={this.state.term}
-                    onChange={this.onInputChange}
+                    value={this.state.city}
+                    onChange={this.onInputChangeCity}
                 />
+
                 <span className="input-group-btn">
+                     <input
+                         placeholder="Country Code"
+                         className="form-control"
+                         value={this.state.country}
+                         onChange={this.onInputChangeCountry}
+                     />
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </span>
             </form>
@@ -37,5 +58,15 @@ export default class SearchBar extends Component{
 
     onFormSubmit(event) {
         event.preventDefault();
+
+        //go fetch weather data
+        this.props.fetchWeather(this.state.city,this.state.country)
+
     }
 }
+
+function mapDispatchToProps(dispatch){
+    return bindActionCreators({fetchWeather},dispatch);
+}
+
+export default connect(null,mapDispatchToProps)(SearchBar);
