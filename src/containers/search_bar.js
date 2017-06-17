@@ -61,10 +61,10 @@ class SearchBar extends Component{
         event.preventDefault();
 
         //go fetch weather data
-        this.props.fetchWeather(this.state.city,this.state.country)
+        this.props.fetchWeather(this.state.city,this.state.country);
 
         //clear inputs
-        this.setState
+        this.setState({city : '',country:''});
 
     }
 }
