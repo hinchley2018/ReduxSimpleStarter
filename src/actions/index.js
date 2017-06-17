@@ -6,7 +6,7 @@ const ROOT_URL = `http://api.openweathermap.org/data/2.5/forecast?appid=${WEATHE
 export const FETCH_WEATHER = 'FETCH_WEATHER';
 
 export function fetchWeather(cityName,countryName="us"){
-    const finalURL = `${ROOT_URL}&q=${cityName},us`;
+    const finalURL = `${ROOT_URL}&q=${cityName},${countryName}`;
 
     //appears sync but its not :)
     const request = axios.get(finalURL);
