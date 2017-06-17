@@ -3,7 +3,9 @@
  */
 
 import React, {Component} from 'react';
-export default class WeatherList extends Component {
+import {connect} from 'react-redux';
+
+class WeatherList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -18,10 +20,19 @@ export default class WeatherList extends Component {
                     <tr>
                         <th>City</th>
                         <th>Temperature</th>
-                        <th>City</th>
+                        <th>Pressure</th>
+                        <th>Humidity</th>
                     </tr>
                 </thead>
+                <tbody>
+
+                </tbody>
             </table>
         );
     }
 }
+
+function mapStateToProps(state) {
+    return{weather:state.weather}
+}
+export default connect(mapStateToProps)(WeatherList);
