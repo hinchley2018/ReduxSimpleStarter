@@ -16,7 +16,7 @@ class SearchBar extends Component{
         this.state = {
             city:'',
             country:''
-        }
+        };
         this.onInputChangeCity = this.onInputChangeCity.bind(this);
         this.onInputChangeCountry = this.onInputChangeCountry.bind(this);
         this.onFormSubmit = this.onFormSubmit.bind(this);
