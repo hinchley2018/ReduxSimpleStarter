@@ -17,8 +17,9 @@ class SearchBar extends Component{
             city:'',
             country:''
         }
-        this.onInputChangeCity = this.onInputChangeCity.bind(this)
-        this.onInputChangeCountry = this.onInputChangeCountry.bind(this)
+        this.onInputChangeCity = this.onInputChangeCity.bind(this);
+        this.onInputChangeCountry = this.onInputChangeCountry.bind(this);
+        this.onFormSubmit = this.onFormSubmit.bind(this);
     }
 
     onInputChangeCity(event){
@@ -61,6 +62,9 @@ class SearchBar extends Component{
 
         //go fetch weather data
         this.props.fetchWeather(this.state.city,this.state.country)
+
+        //clear inputs
+        this.setState
 
     }
 }
